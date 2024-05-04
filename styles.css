@@ -9,10 +9,10 @@ body {
     display: grid;
     grid-gap: none;
     grid-template-columns: auto ;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     background-color: #f9f9f9;
     
@@ -28,7 +28,9 @@ ul.topnav {
     display: flex;
     justify-content: flex-start;
     justify-items: center;
-    
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     background-color: #333;
   }
   
@@ -64,6 +66,9 @@ ul.topnav {
 
 .graph-container {
     margin-top: 20px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    bottom: 0;
 }
 
 /* canvas {
@@ -101,15 +106,19 @@ ul.topnav {
 .hidden {
     display: none;
 }
+#homepageBtn:hover , #settingsBtn:hover{
+    cursor: pointer;
+}
 
 .container {
-    max-width: 458px;
+    max-width: 370px;
     /* margin: 0 auto;
     padding: 20px; */
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
     text-align: center;
+    min-height: 600px;
 }
 
 h1 {
@@ -118,7 +127,7 @@ h1 {
 }
 
 label {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 select, input[type="color"] {
@@ -166,6 +175,11 @@ ul {
 .navbar select,
 .navbar input[type="checkbox"],
 .navbar input[type="color"] {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
+
+#functionHistory {
+    max-height: 300px;
+    overflow-y: auto;
+}

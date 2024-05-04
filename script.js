@@ -84,15 +84,30 @@ function drawDiagram() {
 document
   .getElementById("addFunctionBtn")
   .addEventListener("click", function () {
-    const functionInputs = document.getElementById("functionInputs");
-    const input = document.createElement("input");
-    input.type = "text";
-    input.className = "functionInput";
-    input.placeholder = "Enter a function (e.g., x^2 - exp(x))";
-    functionInputs.appendChild(input);
-    addFunctionToHistory();
    
-  });
+    const functionInputs = document.querySelectorAll(".functionInput");
+    
+    // Check if the number of inputs is less than 3 before adding a new one
+    if (functionInputs.length < 3) {
+        const functionInputsContainer = document.getElementById("functionInputs");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.className = "functionInput";
+        input.placeholder = "Enter a function (e.g., x^2 - exp(x))";
+        functionInputsContainer.appendChild(input);
+        addFunctionToHistory();
+    } else {
+        const firstInput = functionInputs[0];
+        const parent = firstInput.parentNode;
+        parent.removeChild(firstInput);
+        parent.appendChild(firstInput);
+
+        // Update placeholder and clear value for the first input
+        firstInput.value = "";
+        firstInput.placeholder = "Enter a function (e.g., x^2 - exp(x))";
+        addFunctionToHistory();
+    }
+});
 
 // Delete all functions
 document.getElementById("delete").addEventListener("click", function () {
@@ -166,15 +181,36 @@ document.getElementById("settingsBtn").addEventListener("click", function () {
 
 
 
+// // Function to add every added function to history
+// function addFunctionToHistory() {
+//   const functionInputs = document.querySelectorAll(".functionInput");
+//   const functionHistory = document.getElementById("functionHistory");
+//   functionHistory.innerHTML = ""; // Clear previous history
+//   functionInputs.forEach((input) => {
+//     const func = input.value.trim();
+//     if (func !== "") {
+//       // Check if function input is not empty
+//       const li = document.createElement("li");
+//       li.textContent = func;
+//       functionHistory.appendChild(li);
+//       const hr = document.createElement("hr");
+//       functionHistory.appendChild(hr);
+//     }
+//   });
+// }
+
+// Store functions separately from the DOM elements
+const functionHistoryData = [];
+
 // Function to add every added function to history
 function addFunctionToHistory() {
   const functionInputs = document.querySelectorAll(".functionInput");
   const functionHistory = document.getElementById("functionHistory");
-  functionHistory.innerHTML = ""; // Clear previous history
+  
   functionInputs.forEach((input) => {
     const func = input.value.trim();
-    if (func !== "") {
-      // Check if function input is not empty
+    if (func !== "" && !functionHistoryData.includes(func)) {
+      functionHistoryData.push(func); // Store the function in the data array
       const li = document.createElement("li");
       li.textContent = func;
       functionHistory.appendChild(li);
@@ -183,5 +219,6 @@ function addFunctionToHistory() {
     }
   });
 }
+
 
 

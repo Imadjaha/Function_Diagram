@@ -2,7 +2,7 @@
 
 Function Diagram is a web application that allows users to plot mathematical functions and customize the display settings. It provides a user-friendly interface for plotting functions and exporting diagrams in various formats.
 
-[Check out the live demo of my portfolio here.](https://imadjaha.github.io/Function_Diagram/)
+[Check out the live demo here.](https://imadjaha.github.io/Function_Diagram/)
 ## Features
 
 - **Function Plotting:** Plot mathematical functions using a simple input interface.
