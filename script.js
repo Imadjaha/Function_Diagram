@@ -202,3 +202,16 @@ function addFunctionToHistory() {
     }
   });
 }
+
+// Extend the HTMLCanvasElement prototype with a toSVG() method
+if (!HTMLCanvasElement.prototype.toSVG) {
+    HTMLCanvasElement.prototype.toSVG = function() {
+      // Create a new XMLSerializer
+      const serializer = new XMLSerializer();
+      // Serialize the canvas element to XML
+      const svg = serializer.serializeToString(this);
+      // Return the serialized SVG string
+      return svg;
+    };
+  }
+  
