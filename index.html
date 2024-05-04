@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Diagram</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bigContainer">
+      <ul class="topnav">
+        <li><a id="homepageBtn" class="active" href="#home">Homepage</a></li>
+        <li><a id="settingsBtn">Setting</a></li>
+      </ul>
+
+      <div id="homepage" class="container">
+        <h1>Function Diagram</h1>
+        <div id="functionInputs">
+          <input
+            type="text"
+            class="functionInput"
+            placeholder="Enter a function (e.g., x^2 - exp(x))"
+          />
+        </div>
+        <button id="addFunctionBtn">Add Function</button>
+        <button id="exportPngBtn">Export as PNG</button>
+        <button id="exportSvgBtn">Export as SVG</button>
+        <button id="delete">Delete All</button>
+        <div class="graph-container">
+          <canvas id="diagramCanvas" width="370" height="320"></canvas>
+          <div class="x-axis" id="xAxis"></div>
+          <div class="y-axis" id="yAxis"></div>
+        </div>
+      </div>
+
+      <div id="settings" class="container hidden">
+        <h1>Réglages</h1>
+
+        <div class="navbar navbar-settings">
+          <label for="languageSelect">Language:</label>
+          <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="gr">German</option>
+          </select>
+
+          <label for="backupToggle">Automatic Backup:</label>
+          <input type="checkbox" id="backupToggle" />
+
+          <label for="backgroundColorPicker">Background Color:</label>
+          <input type="color" id="backgroundColorPicker" />
+        </div>
+
+        <h2>History of Plotted Functions</h2>
+        <ul id="functionHistory"></ul>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
