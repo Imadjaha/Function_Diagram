@@ -183,3 +183,6 @@ ul {
     max-height: 300px;
     overflow-y: auto;
 }
+#addFunctionBtn{
+    background-color: #04AA6D;
+}

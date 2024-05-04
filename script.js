@@ -53,7 +53,11 @@ function drawDiagram() {
     const color = getRandomColor();
     const expression = func
       .replace(/x/g, "(x)")
+      .replace(/X/g, "(x)")
       .replace(/exp/g, "Math.exp")
+      .replace(/pi/g, "Math.PI")
+      .replace(/exp(x)/g, "Math.exp(x)")
+      .replace(/\^/g, "**") // Replace ^ with **
       .replace(/sqrt/g, "Math.sqrt")
       .replace(/sin/g, "Math.sin")
       .replace(/cos/g, "Math.cos")
@@ -84,43 +88,42 @@ function drawDiagram() {
 document
   .getElementById("addFunctionBtn")
   .addEventListener("click", function () {
-   
     const functionInputs = document.querySelectorAll(".functionInput");
-    
+
     // Check if the number of inputs is less than 3 before adding a new one
     if (functionInputs.length < 3) {
-        const functionInputsContainer = document.getElementById("functionInputs");
-        const input = document.createElement("input");
-        input.type = "text";
-        input.className = "functionInput";
-        input.placeholder = "Enter a function (e.g., x^2 - exp(x))";
-        functionInputsContainer.appendChild(input);
-        addFunctionToHistory();
+      const functionInputsContainer = document.getElementById("functionInputs");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "functionInput";
+      input.placeholder = "Enter a function (e.g., x^2 - exp(x))";
+      functionInputsContainer.appendChild(input);
+      addFunctionToHistory();
     } else {
-        const firstInput = functionInputs[0];
-        const parent = firstInput.parentNode;
-        parent.removeChild(firstInput);
-        parent.appendChild(firstInput);
+      const firstInput = functionInputs[0];
+      const parent = firstInput.parentNode;
+      parent.removeChild(firstInput);
+      parent.appendChild(firstInput);
 
-        // Update placeholder and clear value for the first input
-        firstInput.value = "";
-        firstInput.placeholder = "Enter a function (e.g., x^2 - exp(x))";
-        addFunctionToHistory();
+      // Update placeholder and clear value for the first input
+      firstInput.value = "";
+      firstInput.placeholder = "Enter a function (e.g., x^2 - exp(x))";
+      addFunctionToHistory();
     }
-});
+  });
 
 // Delete all functions
 document.getElementById("delete").addEventListener("click", function () {
-//   const functionInputs = document.querySelectorAll(".functionInput");
-//   functionInputs.forEach((input) => {
-//     input.value = "";
-//   });
-//   // Clear canvas from inserted functions
-//   const canvas = document.getElementById("diagramCanvas");
-//   const ctx = canvas.getContext("2d");
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //   const functionInputs = document.querySelectorAll(".functionInput");
+  //   functionInputs.forEach((input) => {
+  //     input.value = "";
+  //   });
+  //   // Clear canvas from inserted functions
+  //   const canvas = document.getElementById("diagramCanvas");
+  //   const ctx = canvas.getContext("2d");
+  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-// Reload the page
+  // Reload the page
   location.reload();
 });
 
@@ -164,40 +167,20 @@ document.getElementById("exportSvgBtn").addEventListener("click", function () {
 
 // Toggle between homepage and settings view
 document.getElementById("homepageBtn").addEventListener("click", function () {
-    document.getElementById("homepage").classList.remove("hidden");
-    document.getElementById("settings").classList.add("hidden");
-    // Add 'active' class to clicked link and remove from other links
-    this.classList.add("active");
-    document.getElementById("settingsBtn").classList.remove("active");
+  document.getElementById("homepage").classList.remove("hidden");
+  document.getElementById("settings").classList.add("hidden");
+  // Add 'active' class to clicked link and remove from other links
+  this.classList.add("active");
+  document.getElementById("settingsBtn").classList.remove("active");
 });
 
 document.getElementById("settingsBtn").addEventListener("click", function () {
-    document.getElementById("homepage").classList.add("hidden");
-    document.getElementById("settings").classList.remove("hidden");
-    // Add 'active' class to clicked link and remove from other links
-    this.classList.add("active");
-    document.getElementById("homepageBtn").classList.remove("active");
+  document.getElementById("homepage").classList.add("hidden");
+  document.getElementById("settings").classList.remove("hidden");
+  // Add 'active' class to clicked link and remove from other links
+  this.classList.add("active");
+  document.getElementById("homepageBtn").classList.remove("active");
 });
-
-
-
-// // Function to add every added function to history
-// function addFunctionToHistory() {
-//   const functionInputs = document.querySelectorAll(".functionInput");
-//   const functionHistory = document.getElementById("functionHistory");
-//   functionHistory.innerHTML = ""; // Clear previous history
-//   functionInputs.forEach((input) => {
-//     const func = input.value.trim();
-//     if (func !== "") {
-//       // Check if function input is not empty
-//       const li = document.createElement("li");
-//       li.textContent = func;
-//       functionHistory.appendChild(li);
-//       const hr = document.createElement("hr");
-//       functionHistory.appendChild(hr);
-//     }
-//   });
-// }
 
 // Store functions separately from the DOM elements
 const functionHistoryData = [];
@@ -206,7 +189,7 @@ const functionHistoryData = [];
 function addFunctionToHistory() {
   const functionInputs = document.querySelectorAll(".functionInput");
   const functionHistory = document.getElementById("functionHistory");
-  
+
   functionInputs.forEach((input) => {
     const func = input.value.trim();
     if (func !== "" && !functionHistoryData.includes(func)) {
@@ -219,6 +202,3 @@ function addFunctionToHistory() {
     }
   });
 }
-
-
-
