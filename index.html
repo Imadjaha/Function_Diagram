@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="image/png" sizes="16x16" rel="icon" href="https://img.icons8.com/ios-filled/50/sine.png">
 
-    <!-- Make sure to provide the correct path to your diagram favicon -->
  
     <title>Function Diagram</title>
     <link rel="stylesheet" href="styles.css" />
@@ -13,23 +12,24 @@
   <body>
     <div class="bigContainer">
       <ul class="topnav">
-        <li><a id="homepageBtn" class="active" href="#home">Homepage</a></li>
-        <li><a id="settingsBtn">Setting</a></li>
+        <li><a id="homepageBtn" class="active" href="#home" data-translate="Homepage">Homepage</a></li>
+        <li><a id="settingsBtn" data-translate="Setting">Setting</a></li>
       </ul>
 
       <div id="homepage" class="container">
-        <h1>Function Diagram</h1>
+        <h1 data-translate="Homepage">Function Diagram</h1>
         <div id="functionInputs">
           <input
             type="text"
             class="functionInput"
             placeholder="Enter a function (e.g., x^2 - e(x))"
+            data-translate="Enter a function (e.g., x^2 - e(x))"
           />
         </div>
-        <button id="addFunctionBtn">Add Function</button>
-        <button id="exportPngBtn">Export as PNG</button>
-        <button id="exportSvgBtn">Export as SVG</button>
-        <button id="delete">Delete All</button>
+        <button id="addFunctionBtn" data-translate="Add Function">Add Function</button>
+        <button id="exportPngBtn" data-translate="Export as PNG">Export as PNG</button>
+        <button id="exportSvgBtn" data-translate="Export as SVG">Export as SVG</button>
+        <button id="delete" data-translate="Delete All">Delete All</button>
         <div class="graph-container">
           <canvas id="diagramCanvas" width="370" height="320"></canvas>
           <div class="x-axis" id="xAxis"></div>
@@ -41,25 +41,25 @@
        
 
         <div class="navbar navbar-settings">
-          <label for="languageSelect">Language:</label>
+          <label for="languageSelect" data-translate="Language">Language:</label>
           <select id="languageSelect">
             <option value="en">English</option>
-          
             <option value="gr">German</option>
           </select>
 
-          <label for="backupToggle">Automatic Backup:</label>
+          <label for="backupToggle" data-translate="Automatic Backup">Automatic Backup:</label>
           <input type="checkbox" id="backupToggle" />
 
-          <label for="backgroundColorPicker">Background Color:</label>
+          <label for="backgroundColorPicker" data-translate="Background Color">Background Color:</label>
           <input type="color" id="backgroundColorPicker" />
         </div>
 
-        <h2>History of Plotted Functions</h2>
+        <h2 data-translate="History of Plotted Functions">History of Plotted Functions</h2>
         <ul id="functionHistory"></ul>
       </div>
     </div>
 
+    <script src="translateData.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

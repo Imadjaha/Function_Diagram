@@ -1,200 +1,213 @@
 body {
-    font-family: Arial, sans-serif;
-    
+  font-family: Arial, sans-serif;
 }
 * {
-    box-sizing: border-box;
-  }
-.bigContainer{
-    display: grid;
-    grid-gap: none;
-    grid-template-columns: auto ;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    /* border: 1px solid #ccc; */
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    justify-content: center;
-    border: #0056b3 solid 2px;
-    
+  box-sizing: border-box;
+}
+.bigContainer {
+  display: grid;
+  grid-gap: none;
+  grid-template-columns: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  justify-content: center;
+  border: #0056b3 solid 2px;
 }
 ul.topnav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    max-width: 500px;
-    border-radius: 5px;
-    height: 40px;
-    display: flex;
-    justify-content: flex-start;
-    justify-items: center;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    background-color: #333;
-  }
-  
-  ul.topnav li {float: left;}
-  
-  ul.topnav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  ul.topnav li a:hover:not(.active) {background-color: #111;}
-  
-  ul.topnav li a.active {background-color: #04AA6D;}
-  
-  ul.topnav li.right {float: right;}
-  
-  @media screen and (max-width: 600px) {
-    ul.topnav li.right, 
-    ul.topnav li {float: none;}
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: 500px;
 
+  border-radius: 5px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+  justify-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: #333;
+}
 
+ul.topnav li {
+  float: left;
+}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+ul.topnav li a.active {
+  background-color: #04aa6d;
+}
+
+ul.topnav li.right {
+  float: right;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+}
 
 .functionInput {
-    display: block;
-    margin: 5px auto;
-    padding: 5px;
-    width:57%;
+  display: block;
+  margin: 5px auto;
+  padding: 5px;
+  width: 57%;
 }
-.functionInput:hover{
-    box-shadow:3px 3px 2px #0056b3;
-    
+.functionInput:hover {
+  box-shadow: 3px 3px 2px #0056b3;
 }
 
 .graph-container {
-    margin-top: 20px;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    bottom: 0;
+  margin-top: 20px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom: 0;
 }
 
 /* canvas {
     border: 1px solid #000;
 } */
 
-
-.x-axis, .y-axis {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 0 5px;
-    font-size: 12px;
-    pointer-events: none;
+.x-axis,
+.y-axis {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0 5px;
+  font-size: 12px;
+  pointer-events: none;
 }
 
 .x-axis {
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .y-axis {
-    top: 0;
-    height: 100%;
-    text-align: right;
-    padding-right: 10px;
+  top: 0;
+  height: 100%;
+  text-align: right;
+  padding-right: 10px;
 }
 
 .unused-function {
-    color: #888;
+  color: #888;
 }
 
 /* Existing styles */
 
 .hidden {
-    display: none;
+  display: none;
 }
-#homepageBtn:hover , #settingsBtn:hover{
-    cursor: pointer;
+#homepageBtn:hover,
+#settingsBtn:hover {
+  cursor: pointer;
 }
 
 .container {
-    max-width: 370px;
-    /* margin: 0 auto;
+  max-width: 380px;
+  /* margin: 0 auto;
     padding: 20px; */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    text-align: center;
-    min-height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+  min-height: 600px;
 }
 
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 label {
-    font-size: 12px;
+  font-size: 12px;
 }
 
-select, input[type="color"] {
-    padding: 2px;
-    margin: 2px 0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+select,
+input[type="color"] {
+  padding: 2px;
+  margin: 2px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
-button, input[type="button"], input[type="submit"] {
-    padding: 5px 5px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
+button,
+input[type="button"],
+input[type="submit"] {
+  padding: 5px 5px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-button:hover, input[type="button"]:hover, input[type="submit"]:hover {
-    background-color: #0056b3;
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
-#delete{
-    background-color: red;
+#delete {
+  background-color: red;
 }
-#delete:hover{
-    background-color: rgb(163, 0, 0);
+#delete:hover {
+  background-color: rgb(163, 0, 0);
 }
 
 /* Additional styles for settings options */
 
-.navbar.navbar-settings{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #f0f0f0;
+.navbar.navbar-settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: #f0f0f0;
 }
 
 .navbar label,
 .navbar select,
 .navbar input[type="checkbox"],
 .navbar input[type="color"] {
-    margin-right: 10px;
+  margin: 7px 0 7px 5px;
 }
-
 
 #functionHistory {
-    max-height: 300px;
-    overflow-y: auto;
+  max-height: 300px;
+  overflow-y: auto;
 }
-#addFunctionBtn{
-    background-color: #04AA6D;
+#addFunctionBtn {
+  background-color: #04aa6d;
 }
-#addFunctionBtn:hover{
-    background-color: #2abb06;
+#addFunctionBtn:hover {
+  background-color: #2abb06;
 }

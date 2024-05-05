@@ -238,3 +238,7 @@ document.getElementById("backgroundColorPicker").addEventListener("input", funct
   const selectedColor = this.value;
   setAppBackgroundColor(selectedColor);
 });
+
+
+
+
