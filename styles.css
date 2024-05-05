@@ -13,8 +13,10 @@ body {
     margin: 0 auto;
     padding: 20px;
     /* border: 1px solid #ccc; */
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #f9f9f9;
+    justify-content: center;
+    border: #0056b3 solid 2px;
     
 }
 ul.topnav {
@@ -61,7 +63,11 @@ ul.topnav {
     display: block;
     margin: 5px auto;
     padding: 5px;
-    width:50%;
+    width:57%;
+}
+.functionInput:hover{
+    box-shadow:3px 3px 2px #0056b3;
+    
 }
 
 .graph-container {
@@ -160,6 +166,9 @@ ul {
 #delete{
     background-color: red;
 }
+#delete:hover{
+    background-color: rgb(163, 0, 0);
+}
 
 /* Additional styles for settings options */
 
@@ -185,4 +194,7 @@ ul {
 }
 #addFunctionBtn{
     background-color: #04AA6D;
+}
+#addFunctionBtn:hover{
+    background-color: #2abb06;
 }

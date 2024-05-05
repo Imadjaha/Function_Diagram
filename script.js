@@ -44,6 +44,7 @@ function drawDiagram() {
   const ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
   drawAxes(ctx, canvas);
 
   const functionInputs = document.querySelectorAll(".functionInput");
@@ -54,9 +55,9 @@ function drawDiagram() {
     const expression = func
       .replace(/x/g, "(x)")
       .replace(/X/g, "(x)")
-      .replace(/exp/g, "Math.exp")
+      .replace(/e/g, "Math.exp")
       .replace(/pi/g, "Math.PI")
-      .replace(/exp(x)/g, "Math.exp(x)")
+
       .replace(/\^/g, "**") // Replace ^ with **
       .replace(/sqrt/g, "Math.sqrt")
       .replace(/sin/g, "Math.sin")
@@ -68,7 +69,7 @@ function drawDiagram() {
     ctx.beginPath();
 
     for (let x = -6; x <= 6; x += 0.01) {
-      const y = eval(expression);
+      const y = eval(expression);  // Evaluate the expression for each x value ( string to number )
       const plotX = canvas.width / 2 + x * 30;
       const plotY = canvas.height / 2 - y * 25;
       if (x === -6) {
@@ -81,7 +82,28 @@ function drawDiagram() {
     ctx.strokeStyle = color;
     ctx.lineWidth = 2;
     ctx.stroke();
+
+// Display function text
+// ctx.fillStyle = color;
+// ctx.fillText(func, 16, 20 * (index + 1));
+
+// Display equation near the line
+const xValue = 3; 
+const yValue = eval(func.replace(/x/g, `(${xValue})`));
+const equationText = `${getRandomFunctionName()}(x) = ${func}`;
+  // (yValue < 0 || yValue > 100) ? yValue= 0 : yValue = yValue;
+  ctx.fillText(equationText, canvas.width / 2 + xValue * 30 + 10, canvas.height / 2 - yValue * 25 - 10);
   });
+}
+
+// Function to generate random color
+function getRandomFunctionName() {
+  const letters = "FGHL";
+  let random = "";
+
+    random += letters[Math.floor(Math.random() * 4)];
+  
+  return random;
 }
 
 // Add function input field dynamically
@@ -96,34 +118,24 @@ document
       const input = document.createElement("input");
       input.type = "text";
       input.className = "functionInput";
-      input.placeholder = "Enter a function (e.g., x^2 - exp(x))";
+      input.placeholder = "Enter a function (e.g., x^2 - e(x))";
       functionInputsContainer.appendChild(input);
       addFunctionToHistory();
     } else {
       const firstInput = functionInputs[0];
-      const parent = firstInput.parentNode;
-      parent.removeChild(firstInput);
-      parent.appendChild(firstInput);
+      const parent = firstInput.parentNode; // Get the parent element of the first input element ( parentNode means it will return the parent element of the first input element)
+      parent.removeChild(firstInput); // Remove the first input element
+      parent.appendChild(firstInput); // Append the first input element
 
       // Update placeholder and clear value for the first input
       firstInput.value = "";
-      firstInput.placeholder = "Enter a function (e.g., x^2 - exp(x))";
+      firstInput.placeholder = "Enter a function (e.g., x^2 - e(x))";
       addFunctionToHistory();
     }
   });
 
 // Delete all functions
 document.getElementById("delete").addEventListener("click", function () {
-  //   const functionInputs = document.querySelectorAll(".functionInput");
-  //   functionInputs.forEach((input) => {
-  //     input.value = "";
-  //   });
-  //   // Clear canvas from inserted functions
-  //   const canvas = document.getElementById("diagramCanvas");
-  //   const ctx = canvas.getContext("2d");
-  //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Reload the page
   location.reload();
 });
 
@@ -191,7 +203,7 @@ function addFunctionToHistory() {
   const functionHistory = document.getElementById("functionHistory");
 
   functionInputs.forEach((input) => {
-    const func = input.value.trim();
+    const func = input.value.trim(); // trim to remove leading and trailing whitespace
     if (func !== "" && !functionHistoryData.includes(func)) {
       functionHistoryData.push(func); // Store the function in the data array
       const li = document.createElement("li");
@@ -205,13 +217,24 @@ function addFunctionToHistory() {
 
 // Extend the HTMLCanvasElement prototype with a toSVG() method
 if (!HTMLCanvasElement.prototype.toSVG) {
-    HTMLCanvasElement.prototype.toSVG = function() {
-      // Create a new XMLSerializer
-      const serializer = new XMLSerializer();
-      // Serialize the canvas element to XML
-      const svg = serializer.serializeToString(this);
-      // Return the serialized SVG string
-      return svg;
-    };
-  }
-  
+  HTMLCanvasElement.prototype.toSVG = function () {
+    // Create a new XMLSerializer
+    const serializer = new XMLSerializer();
+    // Serialize the canvas element to XML
+    const svg = serializer.serializeToString(this);
+    // Return the serialized SVG string
+    return svg;
+  };
+}
+
+
+// Function to set the background color of the whole app
+function setAppBackgroundColor(color) {
+  document.body.style.backgroundColor = color;
+}
+
+// Add an event listener to the color picker input
+document.getElementById("backgroundColorPicker").addEventListener("input", function () {
+  const selectedColor = this.value;
+  setAppBackgroundColor(selectedColor);
+});
